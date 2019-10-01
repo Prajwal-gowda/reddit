@@ -1,0 +1,90 @@
+input[type="text"],
+input[type="url"] {
+  width: 200px;
+  box-sizing: border-box;
+  border: 1px solid #ccccff;
+  border-radius: 4px;
+}
+
+input[type="text"]:focus {
+  width: 500px;
+}
+
+input[type="url"]:focus {
+  width: 500px;
+}
+
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: black;
+  float: right;
+}
+
+.form-container::after {
+  clear: both;
+  content: "";
+}
+
+.form-container input[type="text"],
+.form-container input[type="password"],
+.form-container input[type="url"] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+.form-container input[type="text"]:focus,
+.form-container input[type="password"]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+.form-container .btn {
+  background-color: #414141;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
+
+.form-container .cancel {
+  background-color: red;
+}
+
+.form-container .btn:hover,
+.open-button:hover {
+  opacity: 1;
+}
+
+.form-container p {
+  margin-bottom: 10px;
+  font-size: 20px;
+  margin: 10px auto;
+  text-align: center;
+}
+
+label {
+  color: white;
+}
+
+.form-header {
+  color: red;
+  margin: 15px;
+}
+
+.submit-btn {
+  margin: 20px;
+  width: 90px;
+  height: 40px;
+}
+
+.cancel-btn {
+  width: 90px;
+  height: 40px;
+}

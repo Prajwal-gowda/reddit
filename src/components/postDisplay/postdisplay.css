@@ -1,0 +1,39 @@
+.header-data {
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.title-header {
+  display: inline-block;
+  color: #af0404;
+  font-weight: bold;
+  font-size: 35px;
+}
+.author-header {
+  display: inline-block;
+  font-weight: bold;
+  font-size: 30px;
+  color: #414141;
+}
+
+.header-break {
+  border: 2px solid darkgray;
+  width: 70%;
+  text-align: center;
+  margin: 30px auto;
+}
+
+.post-image {
+  text-align: center;
+  display: block;
+  margin: 50px auto;
+}
+
+.content-paragraph {
+  color: #414141;
+  width: 80%;
+  font-size: 20px;
+  margin: 20px auto;
+  font-weight: bold;
+}
