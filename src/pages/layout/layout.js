@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
-import Navbar from "../Navbar/navbar";
-import Form from "../Form/form";
-import Post from "../post/post";
+import Navbar from "../../components/Navbar/navbar";
+import Form from "../../components/Form/form";
+import Post from "../../components/post/post";
 import db from "../../utils/DexieDb";
 
 import "./layout.css";
@@ -16,7 +16,7 @@ export class Layout extends Component {
   renderPost = (individualPost, index) => (
     <Post postData={individualPost} key={index} />
   );
-  
+
   addPost = postObj => {
     this.setState({ posts: [...this.state.posts, postObj] });
   };

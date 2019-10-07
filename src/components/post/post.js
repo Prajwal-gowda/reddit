@@ -8,7 +8,7 @@ export class Post extends Component {
     const postData = this.props.postData;
     return (
       <div className="post-container">
-        <img className="post-img" alt="post image" src={postData.imgURL} />
+        <img className="post-img" alt="post" src={postData.imgURL} />
         <span className="title-element">
           {postData.title}-
           <span className="author-element"> {postData.author} </span>

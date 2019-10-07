@@ -21,6 +21,7 @@ class Form extends React.Component {
     postObj.author = this.state.author;
     postObj.content = this.state.content;
     postObj.imgURL = this.state.imgURL;
+    postObj.comments = [];
     console.log(postObj);
 
     // adding data to db

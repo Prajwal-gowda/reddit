@@ -1,10 +1,11 @@
 import React from "react";
-import Navbar from "../Navbar/navbar";
-import PostDisplay from "../postDisplay/PostDisplay";
-import Comment from "../comment/Comment";
+import Navbar from "../../components/Navbar/navbar";
+import PostDisplay from "../../components/postDisplay/PostDisplay";
+import Comment from "../../components/comment/Comment";
 
 import "./viewpost.css";
 import db from "../../utils/DexieDb";
+import { getData } from "../../utils/dbOperations";
 const uuidv4 = require("uuid/v4");
 
 class Viewpost extends React.Component {
@@ -13,6 +14,18 @@ class Viewpost extends React.Component {
     comments: [],
     commentField: "",
     cmt: []
+  };
+
+  commentStorage = commentObject => {
+    db.table("comments")
+      .add(commentObject)
+      .then(id => {
+        const newList = [
+          ...this.state.cmt,
+          Object.assign({}, commentObject, { id })
+        ];
+        this.setState({ cmt: newList });
+      });
   };
 
   updateComment = id => {
@@ -24,15 +37,9 @@ class Viewpost extends React.Component {
         postId: postId,
         parentId: id
       };
-    db.table("comments")
-      .add(commentObject)
-      .then(id => {
-        const newList = [
-          ...this.state.cmt,
-          Object.assign({}, commentObject, { id })
-        ];
-        this.setState({ cmt: newList });
-      });
+    commentObject.text !== ""
+      ? this.commentStorage(commentObject)
+      : alert("enter comment");
   };
 
   updateState = data => {
@@ -47,15 +54,9 @@ class Viewpost extends React.Component {
       text: this.state.commentField,
       parentId: ""
     };
-    db.table("comments")
-      .add(commentObject)
-      .then(id => {
-        const newList = [
-          ...this.state.cmt,
-          Object.assign({}, commentObject, { id })
-        ];
-        this.setState({ cmt: newList });
-      });
+    commentObject.text !== ""
+      ? this.commentStorage(commentObject)
+      : alert("enter comment");
   };
 
   handleChange = ({ target }) => {
@@ -64,27 +65,17 @@ class Viewpost extends React.Component {
 
   commentState = cmtData => {
     const postKey = this.props.match.params.id;
-    console.log(cmtData);
     let commentList = cmtData.filter(
       eachComment => eachComment.postId === postKey
     );
-    console.log(commentList);
     this.setState({ cmt: commentList });
   };
 
   componentDidMount = () => {
     const key = this.props.match.params.id;
-    db.open();
-    db.posts.get(key).then(data => {
-      console.log(data);
-      this.updateState(data);
-    });
-
-    db.table("comments")
-      .toArray()
-      .then(cmt => {
-        this.commentState(cmt);
-      });
+    getData(key);
+    db.posts.get(key, this.updateState);
+    db.table("comments").toArray(this.commentState);
   };
   render() {
     let postDetails = this.state.postData;
@@ -98,6 +89,7 @@ class Viewpost extends React.Component {
           className="add-comment"
           type="text"
           name="commentField"
+          placeholder="Enter comment"
           value={this.state.commentField}
           onChange={this.handleChange}
         />

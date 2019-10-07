@@ -9,7 +9,7 @@ const PostDisplay = ({ postDetails }) => {
         <h3 className="author-header">{postDetails.author}</h3>
       </span>
       <hr className="header-break" />
-      <img className="post-image" alt="post image" src={postDetails.imgURL} />
+      <img className="post-image" alt="post" src={postDetails.imgURL} />
       <p className="content-paragraph">{postDetails.content}</p>
     </div>
   );

@@ -1,0 +1,19 @@
+.comment-thread {
+  margin: 15px 35px;
+  font-size: 25px;
+  border-left: 1px solid black;
+  background-color: gray;
+  text-decoration: underline;
+  padding: 10px;
+}
+
+.edit-icon {
+  font-size: 25px;
+  background-color: gray;
+}
+
+.icon-btn {
+  border: none;
+  outline: none;
+  margin-left: 20px;
+}
